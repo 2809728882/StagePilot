@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; object-src 'none'">
+  <title>StagePilot 控制中心</title>
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <aside>
+    <div class="brand"><span class="brand-mark"></span><div><strong>StagePilot</strong><small>演示控制中心</small></div></div>
+    <nav>
+      <a href="#readiness">运行检查</a>
+      <a href="#connect">手机连接</a>
+      <a href="#media">视频文件夹</a>
+      <a href="#shortcuts">快捷程序</a>
+      <a href="#advanced">切换设置</a>
+    </nav>
+    <div class="aside-status"><span></span>电脑端服务运行中</div>
+  </aside>
+  <main>
+    <header>
+      <div><span class="eyebrow">PRESENTATION CONTROL</span><h1>演示设置</h1></div>
+      <div id="server-url" class="server-pill"></div>
+    </header>
+
+    <section id="readiness" class="panel readiness-panel">
+      <div class="section-head">
+        <div><span class="section-tag">启动检查</span><h2>演示准备状态</h2><p id="runtime-summary">正在检查配置…</p></div>
+        <span id="readiness-score" class="score-pill">0 / 3</span>
+      </div>
+      <div id="readiness-list" class="readiness-list"></div>
+      <div id="runtime-warning" class="runtime-warning" hidden></div>
+    </section>
+
+    <section id="connect" class="panel connect-panel">
+      <div class="panel-copy">
+        <span class="section-tag">手机连接</span>
+        <h2>扫码连接这台电脑</h2>
+        <p>手机和电脑需要位于同一个可信局域网。设置密码后，扫码还需要输入连接密码。</p>
+        <div id="password-status" class="notice"></div>
+        <form id="password-form" class="inline-form">
+          <input id="password" type="password" minlength="6" maxlength="64" autocomplete="new-password" placeholder="设置新的连接密码" required>
+          <input id="confirm-password" type="password" minlength="6" maxlength="64" autocomplete="new-password" placeholder="再次输入密码" required>
+          <button type="submit" class="primary">保存密码</button>
+        </form>
+        <div id="password-message" class="message" role="status"></div>
+      </div>
+      <div class="qr-wrap"><img id="qr" alt="手机连接二维码"><small>使用手机相机扫码</small></div>
+    </section>
+
+    <section id="media" class="panel row-panel">
+      <div class="panel-icon folder-icon"></div>
+      <div class="grow"><span class="section-tag">视频库</span><h2>视频文件夹</h2><p id="media-path"></p></div>
+      <button id="choose-folder" class="secondary">选择文件夹</button>
+    </section>
+
+    <section id="shortcuts" class="panel">
+      <div class="section-head">
+        <div><span class="section-tag">手机快捷入口</span><h2>快捷程序</h2><p>添加后会显示在手机遥控器顶部。</p></div>
+        <button id="add-program" class="secondary">＋ 添加程序</button>
+      </div>
+      <div class="browser-adder">
+        <select id="browser-select" aria-label="选择浏览器"></select>
+        <button id="add-browser" class="secondary">添加浏览器</button>
+      </div>
+      <div id="program-list" class="program-list"></div>
+    </section>
+
+    <section id="advanced" class="panel row-panel">
+      <div class="panel-icon timing-icon"></div>
+      <div class="grow"><span class="section-tag">无痕切换</span><h2>目标窗口等待时间</h2><p>目标窗口激活后等待一小段时间再揭开保持画面。较慢的演示程序可以适当增加。</p></div>
+      <form id="transition-form" class="setting-form">
+        <label for="transition-ms">毫秒</label>
+        <input id="transition-ms" type="number" min="50" max="5000" step="10" required>
+        <button type="submit" class="secondary">保存</button>
+      </form>
+    </section>
+  </main>
+  <div id="toast" role="status"></div>
+  <script src="main.js"></script>
+</body>
+</html>

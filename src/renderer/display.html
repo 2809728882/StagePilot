@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; media-src http://127.0.0.1:*; style-src 'self'; script-src 'self'; object-src 'none'">
+  <title>StagePilot 输出</title>
+  <link rel="stylesheet" href="display.css">
+</head>
+<body>
+  <main id="cover" class="cover visible">
+    <div class="brand">STAGEPILOT</div>
+    <h1 id="cover-title">演示控制台</h1>
+    <p id="cover-subtitle">正在启动…</p>
+    <img id="qr" alt="手机控制二维码">
+    <p id="url"></p>
+  </main>
+  <img id="hold-frame" alt="">
+  <video id="video-a" preload="auto" playsinline></video>
+  <video id="video-b" preload="auto" playsinline></video>
+  <script src="display.js"></script>
+</body>
+</html>

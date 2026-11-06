@@ -1,0 +1,35 @@
+# Dependencies and build outputs
+node_modules/
+dist/
+out/
+
+# Local runtime data and credentials
+.env
+.env.*
+auth.json
+pairing-token.txt
+window-state.json
+config/config.json
+stagepilot/
+
+# Local media and private test material
+media/*
+!media/.gitkeep
+*.rar
+*.zip
+unity-test/
+test-results/
+test-tools/
+.packaged-user-*/
+.transition-user-*/
+
+# Logs, caches and OS files
+*.log
+*.db
+*.db-journal
+*.tmp
+.DS_Store
+Thumbs.db
+
+# Local helper containing machine-specific paths
+start-stagepilot.ps1

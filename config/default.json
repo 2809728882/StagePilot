@@ -1,0 +1,23 @@
+{
+  "port": 17860,
+  "transitionMs": 260,
+  "programs": [
+    {
+      "id": "notepad",
+      "name": "记事本",
+      "command": "notepad.exe",
+      "processName": "notepad",
+      "color": "#4f7cff"
+    },
+    {
+      "id": "calculator",
+      "name": "计算器",
+      "command": "calc.exe",
+      "processName": "CalculatorApp",
+      "color": "#13b981"
+    }
+  ],
+  "mediaDirectories": [
+    "./media"
+  ]
+}

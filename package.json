@@ -1,0 +1,68 @@
+{
+  "name": "stagepilot",
+  "version": "0.5.0",
+  "private": true,
+  "description": "Phone-controlled, interruption-free presentation switching for Windows",
+  "author": "StagePilot Contributors",
+  "license": "MIT",
+  "engines": { "node": ">=22" },
+  "repository": { "type": "git", "url": "https://github.com/2809728882/StagePilot.git" },
+  "homepage": "https://github.com/2809728882/StagePilot#readme",
+  "bugs": { "url": "https://github.com/2809728882/StagePilot/issues" },
+  "keywords": ["presentation", "remote-control", "windows", "electron", "unity"],
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "build:web": "esbuild web/password-crypto.js --bundle --minify --format=iife --global-name=StagePilotCrypto --outfile=public/password-crypto.js",
+    "build:icon": "electron design/generate-icon.cjs",
+    "postinstall": "npm run build:web",
+    "dist": "electron-builder --win nsis --x64",
+    "test": "node --test test/*.test.js",
+    "check": "node --check src/main.js && node --check src/server.js && node --check src/programs.js && node --check src/config.js && node --check public/app.js"
+  },
+  "dependencies": {
+    "@noble/hashes": "^2.0.1",
+    "express": "^5.1.0",
+    "qrcode": "^1.5.4",
+    "ws": "^8.18.3"
+  },
+  "devDependencies": {
+    "electron": "44.3.0",
+    "electron-builder": "^26.0.12",
+    "esbuild": "^0.25.10"
+  },
+  "build": {
+    "appId": "com.stagepilot.desktop",
+    "productName": "StagePilot",
+    "artifactName": "StagePilot-Setup-${version}-${arch}.${ext}",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "public/**/*",
+      "config/**/*",
+      "scripts/**/*",
+      "package.json"
+    ],
+    "asarUnpack": [
+      "scripts/**/*"
+    ],
+    "win": {
+      "icon": "assets/icon.ico",
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "StagePilot",
+      "runAfterFinish": true,
+      "deleteAppDataOnUninstall": false
+    }
+  }
+}

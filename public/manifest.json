@@ -1,0 +1,9 @@
+{
+  "name": "StagePilot 演示遥控器",
+  "short_name": "StagePilot",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080b12",
+  "theme_color": "#0b0f18",
+  "icons": []
+}
